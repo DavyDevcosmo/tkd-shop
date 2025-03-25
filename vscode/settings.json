@@ -1,0 +1,4 @@
+{
+	"editor.formOnSave": true,
+	"editor.defaultFormatter": "biomejs.biome"
+}
