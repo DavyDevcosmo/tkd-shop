@@ -8,7 +8,7 @@
 	"files": {
 		"ignoreUnknown": false,
 		"ignore": [],
-		"include": ["**/*.{ts,tsx,js,jsx}"]
+		"include": ["**/*.{ts,tsx,js,jsx,css}"]
 	},
 	"formatter": {
 		"enabled": true,
