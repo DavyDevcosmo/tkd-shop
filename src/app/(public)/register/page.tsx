@@ -2,10 +2,31 @@
 
 import InputRegister from "@/app/componets/button-register";
 import { useForm } from "react-hook-form";
+import schemaRegister, { FormInputTypes } from "./validations/registerSchema";
+import { zodResolver } from '@hookform/resolvers/zod';
 
 const Register = () => {
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm({
+        mode: "all",
+        resolver: zodResolver(schemaRegister),
+        defaultValues: {
+            email: "",
+            name: "",
+            password: "",
+            confirmPassword: "",
+        },
+    });
+
+    const onSubmit = (data: FormInputTypes) => {
+        console.log(data);
+    }
     return (
-        <form className="flex flex-col p-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col p-4">
             <div className="-0">
                 <h1 className="flex justify-center font-medium font-poppins text-3xl mt-1 mb-5">Acesse a plataforma</h1>
                 <h4 className=" font-regular font-poppins text-sm mb-7">Crie sua conta!</h4>
@@ -17,9 +38,10 @@ const Register = () => {
                     id="email"
                     placeholder="Digite seu endereço de e-mail"
                     type="email"
-                    className="btn-input-primary"
-
+                    className={`btn-input-primary ${errors.email ? 'input-error' : ''}`}
+                    {...register("email")}
                 />
+                {errors.email && <span className="text-red-500 text-sm">{errors.email.message}</span>}
             </div>
 
             <div className="form-group">
@@ -28,28 +50,34 @@ const Register = () => {
                     id="name"
                     placeholder="Digite seu nome"
                     type="name"
-                    className="btn-input-primary"
+                    className={`btn-input-primary ${errors.email ? 'input-error' : ''}`}
+                    {...register("name")}
                 />
+                {errors.name && <span className="text-red-500 text-sm">{errors.name.message}</span>}
             </div>
 
             <div className="form-group">
-                <label htmlFor="campo-senha" className="btn-label-primary">Senha</label>
+                <label htmlFor="password" className="btn-label-primary">Senha</label>
                 <InputRegister
-                    id="campo-password"
+                    id="password"
                     placeholder="Digite sua senha"
                     type="password"
-                    className="btn-input-primary"
+                    className={`btn-input-primary ${errors.password ? 'input-error' : ''}`}
+                    {...register("password")}
                 />
+                {errors.password && <span className="text-red-500 text-sm">{errors.password.message}</span>}
             </div>
 
             <div className="form-group">
-                <label htmlFor="confimPassword" className="btn-label-primary">Comfirme sua senha</label>
+                <label htmlFor="confirmPassword" className="btn-label-primary">Comfirme sua senha</label>
                 <InputRegister
-                    id="confimPassword"
+                    id="confirmPassword"
                     placeholder="Comfirme sua senha"
-                    type="password"
-                    className="btn-input-primary"
+                    type="Password"
+                    className={`btn-input-primary ${errors.confirmPassword ? 'input-error' : ''}`}
+                    {...register("confirmPassword")}
                 />
+                {errors.confirmPassword && <span className="text-red-500 text-sm">{errors.confirmPassword.message}</span>}
             </div>
             <div>
                 <button className="
