@@ -1,12 +1,19 @@
 
 
-export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <h1>page de teste kkkk</h1>
-      </main>
+import { auth } from "../app/auth";
+import { redirect } from "next/navigation";
 
+export default async function PaginaProtegida() {
+  const session = await auth();
+
+  if (!session) {
+    // Redirecionar para a página de login
+    redirect("/auth/login"); // você pode usar o redirect do next/navigation
+  }
+
+  return (
+    <div>
+      <h1>Bem-vindo, {session?.user?.name || "Usuário"}</h1>
     </div>
-  )
+  );
 }

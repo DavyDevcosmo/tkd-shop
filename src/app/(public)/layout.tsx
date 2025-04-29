@@ -11,7 +11,7 @@ export default function PublicLayout({
 }>) {
     return (
         <main >
-            <section className="flex  w-screen h-screen bg-white">
+            <section className="flex w-screen h-screen bg-white">
                 <div
                     className="w-1/2 my-5 ml-5 rounded-2xl bg-blue-800 hidden md:block relative ">
 
