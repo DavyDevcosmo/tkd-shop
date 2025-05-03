@@ -1,14 +1,13 @@
-"use client";
+"use client"
 
-import Image from "next/image";
+import InputRegister from "@/app/componets/input-register";
 import Link from "next/link";
 import { useActionState } from "react";
+import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
-
-import InputLogin from "@/app/componets/Input-login";
+import { useState, useEffect } from "react";
 import { loginUser } from "../actions/loginUser";
 
-// Tipagem do estado de login
 type LoginState = {
     success: boolean;
     errors: {
@@ -17,127 +16,106 @@ type LoginState = {
     };
 };
 
-// Estado inicial
 const initialState: LoginState = {
     success: false,
     errors: {},
 };
 
 const Login = () => {
+    const router = useRouter();
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
     const [state, formAction, pending] = useActionState(
-        async (_prevState: LoginState, formData: FormData): Promise<LoginState> => {
-            const email = formData.get("email")?.toString() || "";
-            const password = formData.get("password")?.toString() || "";
+        async (_prevState: LoginState, _formData: FormData) => {
+            const formData = new FormData();
+            formData.append("email", email);
+            formData.append("password", password);
 
-            try {
-                const response = await loginUser({ email, password });
-
-                if (response.success) {
-                    window.location.href = "/";
-                    return { success: true, errors: {} };
-                }
-
-                return {
-                    success: false,
-                    errors: response.errors ?? { email: ["Erro inesperado."] },
-                };
-            } catch (error: any) {
-                return {
-                    success: false,
-                    errors: { email: ["Erro no servidor. Tente novamente."] },
-                };
-            }
+            return await loginUser(formData);
         },
         initialState
     );
 
+    useEffect(() => {
+        if (state.success) {
+            router.push("/");
+        }
+    }, [state.success, router]);
+
     return (
         <form action={formAction} className="flex flex-col p-4">
             <h1 className="flex justify-center font-medium font-poppins text-3xl mt-1 mb-6">
-                Acesse a plataforma
+                Bem-vindo de volta!
             </h1>
-            <h4 className="font-regular font-poppins text-base mb-2">
-                Se você não tem uma conta, registre-se
-            </h4>
 
-            <div className="flex gap-1 mb-12">
-                <span className="font-regular font-poppins text-base">Você pode se</span>
+            <div className="flex gap-1 mb-6">
+                <span className="font-regular font-poppins text-base">Novo por aqui?</span>
                 <Link href="/auth/register">
                     <span className="text-blue-500 hover:underline font-semibold font-poppins text-base">
-                        registrar aqui!
+                        Crie sua conta
                     </span>
                 </Link>
             </div>
 
-            {/* Campo Email */}
             <div className="form-group">
                 <label htmlFor="email" className="btn-label-primary">E-mail</label>
-                <div className="relative">
-                    <InputLogin
-                        id="email"
-                        type="email"
-                        name="email"
-                        placeholder="Digite seu endereço de e-mail"
-                        className="btn-input-primary pl-10"
-                        defaultValue=""
-                    />
-                    {state.errors?.email && (
-                        <span className="text-red-500 text-sm">{state.errors.email[0]}</span>
-                    )}
-                </div>
+                <InputRegister
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="Digite seu e-mail"
+                    className="btn-input-primary"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                {state.errors.email && <span className="text-red-500 text-sm">{state.errors.email[0]}</span>}
             </div>
 
-            {/* Campo Senha */}
-            <div className="form-group mt-4">
+            <div className="form-group">
                 <label htmlFor="password" className="btn-label-primary">Senha</label>
-                <InputLogin
+                <InputRegister
                     id="password"
-                    type="password"
                     name="password"
+                    type="password"
                     placeholder="Digite sua senha"
                     className="btn-input-primary"
-                    defaultValue=""
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                 />
-                {state.errors?.password && (
-                    <span className="text-red-500 text-sm">{state.errors.password[0]}</span>
-                )}
+                {state.errors.password && <span className="text-red-500 text-sm">{state.errors.password[0]}</span>}
             </div>
 
             <button
                 type="submit"
-                className="w-full h-12 md:h-14 rounded-full bg-[#0A1CA4] hover:bg-[#0D26DF] text-white font-poppins font-medium mt-24 mb-2 cursor-pointer transition-colors lg:mt-15"
+                className="w-full h-12 md:h-14 rounded-full bg-[#0A1CA4] hover:bg-[#0D26DF] text-white font-poppins font-medium mt-5 mb-4"
             >
-                {pending ? "Entrando..." : "Login"}
+                {pending ? "Entrando..." : "Entrar"}
             </button>
 
-            <div className="mt-5 mb-5 flex flex-col items-center">
-                <h5 className="text-[#B5B5B5] font-poppins text-base">ou continuar com</h5>
-                <div className="flex gap-2 mt-2 mb-2">
-                    <button
-                        type="button"
-                        onClick={() => signIn("google", { callbackUrl: "/" })}
-                        className="btn-social-login flex items-center gap-5"
-                    >
-                        <Image src="/img/google.svg" alt="Google" width={36} height={36} />
-                    </button>
-
-                    <button
-                        type="button"
-                        onClick={() => signIn("facebook", { callbackUrl: "/" })}
-                        className="btn-social-login flex items-center gap-5 px-5"
-                    >
-                        <Image src="/img/Facebook.svg" alt="Facebook" width={36} height={36} />
-                    </button>
-
-                    <button
-                        type="button"
-                        onClick={() => signIn("apple", { callbackUrl: "/" })}
-                        className="btn-social-login flex items-center gap-5"
-                    >
-                        <Image src="/img/apple.svg" alt="Apple" width={36} height={36} />
-                    </button>
-                </div>
+            <div className="flex items-center justify-center gap-2 my-4">
+                <span className="w-1/5 border-t border-gray-300"></span>
+                <span className="text-gray-500 text-sm">ou continue com</span>
+                <span className="w-1/5 border-t border-gray-300"></span>
             </div>
+
+
+            <button
+                type="button"
+                onClick={() => signIn("google", { redirectTo: "/" })}
+                className="w-full h-12 md:h-14 rounded-full border border-gray-300 hover:bg-gray-100 font-poppins font-medium mb-3"
+            >
+                Login com Google
+            </button>
+
+            <button
+                type="button"
+                onClick={() => signIn("github", { redirectTo: "/" })}
+                className="w-full h-12 md:h-14 rounded-full border border-gray-300 hover:bg-gray-100 font-poppins font-medium"
+            >
+                Login com GitHub
+            </button>
         </form>
     );
 };

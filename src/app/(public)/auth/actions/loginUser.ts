@@ -1,22 +1,25 @@
+// app/actions/loginUser.ts
 "use server";
 
-import { signIn } from "next-auth/react";
+import { schemaLogin } from "../validations/registerSchema";
 
-export async function loginUser(data: { email: string; password: string }) {
-  const result = await signIn("credentials", {
-    email: data.email,
-    password: data.password,
-    redirect: false,
-  });
 
-  if (result?.error) {
-    return {
-      success: false,
-      errors: result.error,
-    };
+export async function loginUser(formData: FormData) {
+  const data = {
+    email: formData.get("email")?.toString() || "",
+    password: formData.get("password")?.toString() || "",
+  };
+
+  const parsed = schemaLogin.safeParse(data);
+
+  if (!parsed.success) {
+    console.log("Erro de validação login:", parsed.error.flatten().fieldErrors);
+    return { success: false, errors: parsed.error.flatten().fieldErrors };
   }
 
-  return {
-    success: true,
-  };
+  await new Promise((resolve) => setTimeout(resolve, 1500));
+
+  console.log("Login feito com:", parsed.data);
+
+  return { success: true, errors: {} };
 }
