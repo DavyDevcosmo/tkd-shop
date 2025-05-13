@@ -8,6 +8,8 @@ import { signIn } from "next-auth/react";
 import { useState, useEffect } from "react";
 import { loginUser } from "../actions/loginUser";
 
+import GoogleLogo from "../../../componets/googleLogo";
+
 type LoginState = {
     success: boolean;
     errors: {
@@ -100,22 +102,14 @@ const Login = () => {
                 <span className="w-1/5 border-t border-gray-300"></span>
             </div>
 
-
-            <button
-                type="button"
-                onClick={() => signIn("google", { redirectTo: "/" })}
-                className="w-full h-12 md:h-14 rounded-full border border-gray-300 hover:bg-gray-100 font-poppins font-medium mb-3"
-            >
-                Login com Google
-            </button>
-
             <button
                 type="button"
                 onClick={() => signIn("github", { redirectTo: "/" })}
-                className="w-full h-12 md:h-14 rounded-full border border-gray-300 hover:bg-gray-100 font-poppins font-medium"
+                className="w-full h-12 md:h-14 flex items-center justify-center gap-2 rounded-full border border-gray-300 hover:bg-gray-100 transition-colors duration-200"
             >
-                Login com GitHub
+                <GoogleLogo />
             </button>
+
         </form>
     );
 };
