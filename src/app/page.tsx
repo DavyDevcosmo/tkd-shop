@@ -2,15 +2,14 @@
 "use client"
 import { useSession } from "next-auth/react";
 
-const Dashboard = () => {
-  const { data: session } = useSession();
+import NavBar from "./componets/navBar";
 
+const Dashboard = () => {
   return (
-    <div>
-      <h1>Bem-vindo, {session?.user?.name}</h1>
-      <p>Seu ID: {session?.user?.id}</p>
-    </div>
-  );
+
+    <NavBar />
+  )
+
 };
 
 export default Dashboard;

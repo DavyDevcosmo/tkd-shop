@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@theme {
+  --color-primary: #252B42;
+}
+
 @layer components {
  
   .btn-label-primary {
@@ -7,6 +11,7 @@
     font-size:  12px;
     font-family: 'Poppins', sans-serif;
   }
+ 
 }
 
 
