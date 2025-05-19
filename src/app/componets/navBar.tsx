@@ -6,6 +6,7 @@ import { encode } from "punycode";
 import { useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import { FilterByTypes } from "./Filter-by-type";
 
 function navBar() {
 
@@ -68,53 +69,7 @@ function navBar() {
             </section>
 
 
-            <section className="w-full py-2 bg-white shadow-sm pb-4">
-                <nav className="flex justify-center items-center h-full">
-                    <ul className="flex items-center justify-center gap-16 text-md font-Poppins text-primary">
-                        <li>
-                            <a
-                                href="#"
-                                className="inline-block transition-transform duration-200 ease-in-out hover:scale-110"
-                            >
-                                Início
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="#"
-                                className="inline-block transition-transform duration-200 ease-in-out hover:scale-110"
-                            >
-                                Proteção
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="#"
-                                className="inline-block transition-transform duration-200 ease-in-out hover:scale-110"
-                            >
-                                Dobok
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="#"
-                                className="inline-block transition-transform duration-200 ease-in-out hover:scale-110"
-                            >
-                                Faixa Taekwondo
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="#"
-                                className="inline-block transition-transform duration-200 ease-in-out hover:scale-105"
-                            >
-                                Sobre o taekwondo
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </section>
-
+            <FilterByTypes />
         </header>
     )
 
