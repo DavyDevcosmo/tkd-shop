@@ -2,14 +2,15 @@
 
 import { createContext, useState, ReactNode } from "react"
 import { FilterType } from "../types/filter-types"
+import { ProtectorType } from "../types/protections-Types"
 
 
 interface FilterContextType {
     search: string
     page: number
     type: FilterType
-    // priority: PriorityTypes
-    //setPriority: (value: PriorityTypes) => void
+    Protector: ProtectorType
+    setProtector: (value: ProtectorType) => void
     setSearch: (value: string) => void
     setPage: (value: number) => void
     setType: (value: FilterType) => void
@@ -25,7 +26,7 @@ export function FilterContextProvider({ children }: ProviderProps) {
     const [search, setSearch] = useState("")
     const [page, setPage] = useState(0)
     const [type, setType] = useState(FilterType.All)
-    //const [priority, setPriority] = useState(FilterType.All)
+    const [Protector, setProtector] = useState(ProtectorType.ARM)
 
     return (
         <FilterContext.Provider
@@ -36,8 +37,8 @@ export function FilterContextProvider({ children }: ProviderProps) {
                 setPage,
                 type,
                 setType,
-                //priority,
-                //setPriority,
+                Protector,
+                setProtector,
             }}
         >
             {children}

@@ -1,6 +1,6 @@
 
 import Image from "next/image";
-import { IoMdContact } from "react-icons/io";
+import { FaRegUser } from "react-icons/fa6";
 import { useRouter } from "next/navigation";
 import { encode } from "punycode";
 import { useState } from "react";
@@ -32,7 +32,7 @@ function navBar() {
                                 value={query}
                                 onChange={(e) => setQuery(e.target.value)}
                                 placeholder="O que você está buscando?"
-                                className="w-full pr-10 pl-4 py-2 placeholder-font-Poppins text-font-Poppins placeholder-primary border border-gray-900 rounded-lg focus:outline-none "
+                                className="w-full pr-10 pl-4 py-2 placeholder-font-Poppins text-font-Poppins placeholder-primary border border-[#D9D9D9] rounded-lg focus:outline-none "
                             />
                             <CiSearch className="absolute right-3 w-8 h-8 top-1/2 transform -translate-y-1/2 text-black text-xl pointer-events-none" />
                         </div>
@@ -54,7 +54,7 @@ function navBar() {
                     <ul className="flex items-center gap-10">
                         <li>
                             <a href="#" className="flex items-center gap-2">
-                                <IoMdContact className="w-8 h-8" />
+                                <FaRegUser className="w-5 h-5" />
                                 <span className="text-sm font-Poppins text-primary ">Minha Conta</span>
                             </a>
                         </li>

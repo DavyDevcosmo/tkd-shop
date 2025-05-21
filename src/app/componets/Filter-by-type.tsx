@@ -1,5 +1,6 @@
 import { useFilter } from "../hooks/useFilter";
 import { FilterType } from "../types/filter-types";
+import { ProtectionFilterModal } from "./ProtectionFilterModal";
 
 const FILTERS = [
     { key: FilterType.All, label: "Todos os produtos" },
@@ -9,11 +10,8 @@ const FILTERS = [
     { key: FilterType.TAEKWONDO, label: "Sobre o Taekwondo" },
 ];
 
-
 export function FilterByTypes() {
-
     const { type, setType } = useFilter();
-
 
     const handleChangeType = (value: FilterType) => {
         setType(value);
@@ -26,21 +24,25 @@ export function FilterByTypes() {
                 <ul className="flex items-center justify-center gap-16 text-md font-Poppins text-primary">
                     {FILTERS.map((filter) => (
                         <li key={filter.key}>
-                            <button
-                                type="button"
-                                aria-current={type === filter.key ? "page" : undefined}
-                                onClick={() => setType(filter.key)}
-                                className={` ${type === filter.key ? "font-semibold border-b-2 border-red-500" : ""} focus-visible:border-red-500`}
-                            >
-                                {filter.label}
-                            </button>
-
+                            {filter.key === FilterType.PROTECTION ? (
+                                <ProtectionFilterModal
+                                    onSelect={() => setType(FilterType.PROTECTION)}
+                                />
+                            ) : (
+                                <button
+                                    type="button"
+                                    aria-current={type === filter.key ? "page" : undefined}
+                                    onClick={() => setType(filter.key)}
+                                    className={` ${type === filter.key ? "font-semibold border-b-2 border-red-500" : ""} focus-visible:border-red-500`}
+                                >
+                                    {filter.label}
+                                </button>
+                            )}
                         </li>
                     ))}
-
                 </ul>
             </nav>
         </section>
+    );
 
-    )
 }

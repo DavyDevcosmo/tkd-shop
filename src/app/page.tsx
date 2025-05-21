@@ -3,11 +3,14 @@
 import { useSession } from "next-auth/react";
 
 import NavBar from "./componets/navBar";
+import { FilterContextProvider } from "./context/filter-context";
+
 
 const Dashboard = () => {
   return (
-
-    <NavBar />
+    <FilterContextProvider>
+      <NavBar />
+    </FilterContextProvider>
   )
 
 };

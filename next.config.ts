@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import withFlowbiteReact from "flowbite-react/plugin/nextjs";
 
 const nextConfig: NextConfig = {
   images: {
@@ -18,4 +19,4 @@ const nextConfig: NextConfig = {
   // Outras configurações globais do Next.js podem vir aqui
 };
 
-export default nextConfig;
+export default withFlowbiteReact(nextConfig);
