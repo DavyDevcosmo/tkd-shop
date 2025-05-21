@@ -4,13 +4,18 @@ import { useSession } from "next-auth/react";
 
 import NavBar from "./componets/navBar";
 import { FilterContextProvider } from "./context/filter-context";
+import { BannerMain } from "./componets/banner-main";
 
 
 const Dashboard = () => {
   return (
-    <FilterContextProvider>
-      <NavBar />
-    </FilterContextProvider>
+    <main>
+      <FilterContextProvider>
+        <NavBar />
+      </FilterContextProvider>
+      <BannerMain />
+    </main>
+
   )
 
 };
