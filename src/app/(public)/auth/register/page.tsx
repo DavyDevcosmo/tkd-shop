@@ -1,6 +1,6 @@
 "use client"
 
-import InputRegister from "@/app/componets/input-register";
+import InputRegister from "@/app/componets/Input-register";
 import { registerUser } from "../actions/registerUser";
 import Link from "next/link";
 import { useActionState } from "react";

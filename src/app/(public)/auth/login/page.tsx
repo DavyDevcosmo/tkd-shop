@@ -1,6 +1,5 @@
 "use client"
 
-import InputRegister from "@/app/componets/input-register";
 import Link from "next/link";
 import { useActionState } from "react";
 import { useRouter } from "next/navigation";
@@ -8,7 +7,8 @@ import { signIn } from "next-auth/react";
 import { useState, useEffect } from "react";
 import { loginUser } from "../actions/loginUser";
 
-import GoogleLogo from "../../../componets/googleLogo";
+import GoogleLogo from "../../../componets/Google-logo";
+import InputRegister from "@/app/componets/Input-register";
 
 type LoginState = {
     success: boolean;

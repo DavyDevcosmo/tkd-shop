@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css"; // Importa os estilos do FontAwesome
-import SwiperCarousel from "../componets/swiperCarrosel";
+import SwiperCarousel from "../componets/Swiper-carrosel";
 config.autoAddCss = false;
 
 export default function PublicLayout({
