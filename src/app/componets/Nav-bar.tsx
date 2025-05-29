@@ -8,6 +8,7 @@ import { CiSearch } from "react-icons/ci";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { FilterByTypes } from "./Filter-by-type";
 
+
 function navBar() {
 
 

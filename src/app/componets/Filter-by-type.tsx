@@ -2,7 +2,7 @@ import { useFilter } from "../hooks/useFilter";
 import { FilterType } from "../types/Filter-types";
 import { ProtectionFilterModal } from "./Protection-filter-modal";
 
-const FILTERS = [
+export const FILTERS = [
     { key: FilterType.All, label: "Todos os produtos" },
     { key: FilterType.DOBOK, label: "Dobok" },
     { key: FilterType.PROTECTION, label: "Proteção" },

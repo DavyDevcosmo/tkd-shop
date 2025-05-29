@@ -6,6 +6,7 @@ import NavBar from "./componets/Nav-bar";
 import { FilterContextProvider } from "./context/Filter-context";
 import { AboutUsSection } from "./componets/About-us";
 import { BannerMain } from "./componets/Banner-main";
+import { Footer } from "./componets/Footer";
 
 
 const Dashboard = () => {
@@ -16,6 +17,9 @@ const Dashboard = () => {
       </FilterContextProvider>
       <BannerMain />
       <AboutUsSection />
+      <FilterContextProvider>
+        <Footer />
+      </FilterContextProvider>
     </main>
 
   )
