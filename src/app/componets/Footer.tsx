@@ -18,11 +18,11 @@ export function Footer() {
     }
 
     return (
-        <footer className="w-full h-[60vh] bg-primary flex justify-between px-4 py-8">
-            <section className="w-full py-2  ">
+        <footer className="w-full h-[70vh] bg-primary flex justify-between px-4 py-8">
+            <section className="w-full py-2 mt-12  ">
                 <nav className="flex justify-start items-start h-full" aria-label="Filtro de Produtos">
 
-                    <ul className="flex flex-col items-start justify-start gap-4 text-md font-Poppins text-white pl-28">
+                    <ul className="flex flex-col items-start justify-start gap-4 text-sm font-Poppins text-white pl-28">
                         <li className="text-lg font-medium font-Poppins">Links</li>
                         {FILTERS.map((filter) => (
                             <li key={filter.key}>
@@ -41,18 +41,18 @@ export function Footer() {
                     </ul>
 
                     <div className="flex justify-start items-start h-full ">
-                        <ul className="flex flex-col items-start justify-start gap-4 text-md font-Poppins text-white pl-56">
+                        <ul className="flex flex-col items-start justify-start gap-4 text-sm font-Poppins text-white pl-56">
                             <li className="text-lg font-medium font-Poppins">Entre em contato</li>
                             <li className="flex items-center gap-2">
-                                <FaWhatsapp className="text-white w-8 h-8" />
+                                <FaWhatsapp className="text-white w-7 h-7" />
                                 85 4002-8922
                             </li>
                             <li className="flex items-center gap-2">
-                                <IoLocationOutline className="text-white  w-8 h-8" />
+                                <IoLocationOutline className="text-white  w-7 h-7" />
                                 4517 Washington Ave.
                             </li>
                             <li className="flex items-center gap-2">
-                                <MdOutlineEmail className="text-white  w-8 h-8" />
+                                <MdOutlineEmail className="text-white  w-7 h-7" />
                                 tkdShoop@gmai.com
                             </li>
                         </ul>
