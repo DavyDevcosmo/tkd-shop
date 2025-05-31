@@ -1,4 +1,4 @@
-import Image from "next/image";
+'use client';
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css"; // Importa os estilos do FontAwesome
 import SwiperCarousel from "../componets/Swiper-carrosel";
