@@ -1,6 +1,6 @@
 import { useFilter } from "../hooks/useFilter";
 import { FilterType } from "../types/Filter-types";
-import { FILTERS } from "./Filter-by-type";
+
 
 import { FaWhatsapp } from "react-icons/fa";
 import { IoLocationOutline } from "react-icons/io5";
@@ -22,23 +22,7 @@ export function Footer() {
             <section className="w-full py-2 mt-12  ">
                 <nav className="flex justify-start items-start h-full" aria-label="Filtro de Produtos">
 
-                    <ul className="flex flex-col items-start justify-start gap-4 text-sm font-Poppins text-white pl-28">
-                        <li className="text-lg font-medium font-Poppins">Links</li>
-                        {FILTERS.map((filter) => (
-                            <li key={filter.key}>
 
-                                <button
-                                    type="button"
-                                    aria-current={type === filter.key ? "page" : undefined}
-                                    onClick={() => setType(filter.key)}
-                                    className={` ${type === filter.key ? "font-semibold " : ""} `}
-                                >
-                                    {filter.label}
-                                </button>
-
-                            </li>
-                        ))}
-                    </ul>
 
                     <div className="flex justify-start items-start h-full ">
                         <ul className="flex flex-col items-start justify-start gap-4 text-sm font-Poppins text-white pl-56">

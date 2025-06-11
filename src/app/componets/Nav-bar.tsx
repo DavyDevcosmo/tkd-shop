@@ -1,3 +1,4 @@
+"use client"
 
 import Image from "next/image";
 import { FaRegUser } from "react-icons/fa6";
@@ -9,9 +10,7 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { FilterByTypes } from "./Filter-by-type";
 
 
-function navBar() {
-
-
+export default function NavBar() {
     const [query, setQuery] = useState("");
     const router = useRouter();
 
@@ -24,7 +23,6 @@ function navBar() {
     return (
         <header>
             <section className="flex items-center justify-between w-full px-4 py-8 bg-white shadow-sm mb-4">
-
                 <div className="flex-1 max-w-md">
                     <form onSubmit={handleSearch} className="w-80">
                         <div className="relative">
@@ -33,13 +31,12 @@ function navBar() {
                                 value={query}
                                 onChange={(e) => setQuery(e.target.value)}
                                 placeholder="O que você está buscando?"
-                                className="w-full pr-10 pl-4 py-2 placeholder-font-Poppins text-font-Poppins placeholder-primary border border-[#D9D9D9] rounded-lg focus:outline-none "
+                                className="w-full pr-10 pl-4 py-2 placeholder-font-Poppins text-font-Poppins placeholder-primary border border-[#D9D9D9] rounded-lg focus:outline-none"
                             />
                             <CiSearch className="absolute right-3 w-8 h-8 top-1/2 transform -translate-y-1/2 text-black text-xl pointer-events-none" />
                         </div>
                     </form>
                 </div>
-
 
                 <div className="absolute left-1/2 transform -translate-x-1/2">
                     <Image
@@ -56,7 +53,7 @@ function navBar() {
                         <li>
                             <a href="#" className="flex items-center gap-2">
                                 <FaRegUser className="w-5 h-5" />
-                                <span className="text-sm font-Poppins text-primary ">Minha Conta</span>
+                                <span className="text-sm font-Poppins text-primary">Minha Conta</span>
                             </a>
                         </li>
                         <li>
@@ -69,9 +66,7 @@ function navBar() {
                 </div>
             </section>
 
-
             <FilterByTypes />
         </header>
-    )
-
-}; export default navBar;
+    );
+}
