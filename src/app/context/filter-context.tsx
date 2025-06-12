@@ -28,7 +28,7 @@ export function FilterContextProvider({ children }: ProviderProps) {
     const [page, setPage] = useState(0)
     const [type, setType] = useState(FilterType.ALL)
     const [Protector, setProtector] = useState(ProtectorType.ARM)
-    const [category, setCategory] = useState("") // Estado para categoria
+    const [category, setCategory] = useState("")
 
     const handleSetType = (newType: FilterType) => {
         setType(newType);
@@ -46,8 +46,8 @@ export function FilterContextProvider({ children }: ProviderProps) {
                 setType: handleSetType,
                 Protector,
                 setProtector,
-                category, // Incluído no value
-                setCategory, // Incluído no value
+                category,
+                setCategory,
             }}
         >
             {children}

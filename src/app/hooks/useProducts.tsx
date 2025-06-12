@@ -1,21 +1,29 @@
-import { useEffect, useState } from "react";
-import { useFilter } from "./useFilter";
-import { Product } from "@prisma/client";
+"use client"
+
+import { useEffect, useState } from "react"
+
+export type Product = {
+    id: number
+    name: string
+    description: string
+    price: number
+    images: string[]
+    category: string
+    slug: string
+}
 
 export function useProducts() {
-    const { category } = useFilter();
-    const [products, setProducts] = useState<Product[]>([]);
+    const [products, setProducts] = useState<Product[]>([])
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        const fetchProducts = async () => {
-            const query = category ? `?category=${category}` : '';
-            const response = await fetch(`/api/products${query}`);
-            const data = await response.json();
-            setProducts(data);
-        };
+        fetch("/api/products")
+            .then(res => res.json())
+            .then(data => {
+                setProducts(data)
+                setLoading(false)
+            })
+    }, [])
 
-        fetchProducts();
-    }, [category]);
-
-    return { products };
+    return { products, loading }
 }
