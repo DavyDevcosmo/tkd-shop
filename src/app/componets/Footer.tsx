@@ -1,3 +1,5 @@
+"use client"
+
 import { useFilter } from "../hooks/useFilter";
 import { FilterType } from "../types/Filter-types";
 
@@ -21,9 +23,6 @@ export function Footer() {
         <footer className="w-full h-[70vh] bg-primary flex justify-between px-4 py-8">
             <section className="w-full py-2 mt-12  ">
                 <nav className="flex justify-start items-start h-full" aria-label="Filtro de Produtos">
-
-
-
                     <div className="flex justify-start items-start h-full ">
                         <ul className="flex flex-col items-start justify-start gap-4 text-sm font-Poppins text-white pl-56">
                             <li className="text-lg font-medium font-Poppins">Entre em contato</li>
