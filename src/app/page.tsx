@@ -13,8 +13,8 @@ const Dashboard = () => {
       <FilterContextProvider>
         <NavBar />
       </FilterContextProvider>
-      <ProductList />
       <BannerMain />
+      <ProductList />
       <AboutUsSection />
       <FilterContextProvider>
         <Footer />
