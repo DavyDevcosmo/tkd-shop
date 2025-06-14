@@ -1,11 +1,16 @@
-import { NextResponse } from "next/server"
+import { NextResponse, NextRequest } from "next/server"
 import { PrismaClient } from "@prisma/client"
 
 const prisma = new PrismaClient()
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
-    const products = await prisma.product.findMany()
+    const { searchParams } = new URL(request.url)
+    const category = searchParams.get("category")
+
+    const where = category ? { category } : undefined
+    const products = await prisma.product.findMany({ where })
+
     return NextResponse.json(products)
   } catch (error) {
     return NextResponse.json({ error: "Erro ao buscar produtos!" }, { status: 500 })
