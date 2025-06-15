@@ -7,7 +7,7 @@ const products = [
     slug: "dobok-infantil",
     description: "Uniforme de Taekwondo leve e confortável para crianças.",
     price: 129.90,
-    images: ["/images/dobok-infantil.jpg"],
+    images: ["https://raw.githubusercontent.com/DavyDevcosmo/tkd-shop/master/public/img/AboutUsSection2.jpg"],
     category: "Doboks"
   },
   {
@@ -15,7 +15,7 @@ const products = [
     slug: "faixa-amarela",
     description: "Faixa de graduação em algodão reforçado.",
     price: 29.90,
-    images: ["/images/faixa-amarela.jpg"],
+   // images: ["/images/faixa-amarela.jpg"],
     category: "Faixas"
   },
   {
@@ -23,7 +23,7 @@ const products = [
     slug: "protetor-torax",
     description: "Protetor com cores azul/vermelho para treinos e competições.",
     price: 159.00,
-    images: ["/images/protetor-torax.jpg"],
+    //images: ["/images/protetor-torax.jpg"],
     category: "Proteções"
   },
   {
@@ -31,7 +31,7 @@ const products = [
     slug: "luva-taekwondo",
     description: "Luva de treino com fechamento em velcro.",
     price: 79.90,
-    images: ["/images/luva.jpg"],
+    //images: ["/images/luva.jpg"],
     category: "Equipamentos"
   },
   {
@@ -39,7 +39,7 @@ const products = [
     slug: "raquete-chute",
     description: "Ideal para treinar precisão e velocidade dos chutes.",
     price: 89.90,
-    images: ["/images/raquete-chute.jpg"],
+    //images: ["/images/raquete-chute.jpg"],
     category: "Acessórios"
   }
 ];

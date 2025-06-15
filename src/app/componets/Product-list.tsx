@@ -10,19 +10,21 @@ export default function ProductList() {
 
     return (
         <div className="container mx-auto px-4">
-            <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-center">
+            <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-center ">
                 {products.map(product => (
-                    <article key={product.id} className="flex flex-col items-center h-80 w-60 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                        <div className="relative w-full h-48">
+                    <article key={product.id} className="flex flex-col items-center h-96 w-72 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div className="relative w-full h-3/5">
                             <Image
-                                src={product.images[0] || "/img/default.jpg"}
+                                src="https://raw.githubusercontent.com/DavyDevcosmo/tkd-shop/master/public/img/protection.jpg"
                                 alt={product.name}
                                 fill
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                                 priority
                                 className="object-cover rounded-2xl"
                             />
+
                         </div>
-                        <div className="flex flex-col mt-4 justify-end w-full">
+                        <div className="flex flex-1 flex-col mt-4 justify-end w-full ml-4">
                             <ul className="flex self-start">
                                 <li className="text-primary font-Monterrat font-bold mr-1 ">
                                     {product?.price ? product.price.toFixed(2) : "--"}
@@ -33,10 +35,10 @@ export default function ProductList() {
                             </ul>
                             <h3 className="text-lg font-Montserrat text-primary font-medium">{product.name}</h3>
                         </div>
-                        <div className="flex items-center justify-between w-full mt-2">
-                            <button className="bg-primary py-3 px-12 text-white font-semibold font-Poppins cursor-pointer">Comprar</button>
-                            <a href="#" className="flex items-center mr-4">
-                                <AiOutlineShoppingCart className="w-6 h-6" />
+                        <div className="flex items-center justify-between w-full pb-0 mt-4">
+                            <button className="bg-primary py-3 px-16 ml-2 mb-2 text-white font-semibold font-Poppins cursor-pointer">Comprar</button>
+                            <a href="#" className="flex flex-1 justify-center items-center mr-4">
+                                <AiOutlineShoppingCart className="w-8 h-8" />
                             </a>
                         </div>
                     </article>
