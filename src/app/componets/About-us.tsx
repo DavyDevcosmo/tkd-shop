@@ -3,11 +3,8 @@ import Image from "next/image";
 export function AboutUsSection() {
     return (
         <section className="bg-bgSecondary w-full min-h-screen flex items-center justify-center py-16">
-
             <div className="flex w-11/12 max-w-7xl items-center justify-between gap-8">
-
                 <div className="flex flex-1 gap-4 h-[60vh] relative">
-
                     <div className="relative w-1/3 h-full">
                         <Image
                             src="https://raw.githubusercontent.com/DavyDevcosmo/tkd-shop/master/public/img/AboutUsSection1.jpg"
@@ -16,8 +13,6 @@ export function AboutUsSection() {
                             className="object-contain "
                         />
                     </div>
-
-
                     <div className="relative w-1/2 h-full">
                         <Image
                             src="https://raw.githubusercontent.com/DavyDevcosmo/tkd-shop/master/public/img/AboutUsSection2.jpg"
@@ -27,7 +22,6 @@ export function AboutUsSection() {
                         />
                     </div>
                 </div>
-
                 <div className="flex-1">
                     <h1 className="font-bold text-4xl font-Montserrat text-primary mb-6">
                         Equipando Sua Vitória no Taekwondo.
@@ -40,7 +34,6 @@ export function AboutUsSection() {
                     </p>
                 </div>
             </div>
-
         </section >
     )
 }

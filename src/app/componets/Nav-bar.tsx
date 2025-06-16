@@ -24,10 +24,10 @@ export default function NavBar() {
         <header>
             <section className="flex items-center justify-between w-full px-4 py-8 bg-white shadow-sm mb-4">
                 <div className="flex-1 max-w-md">
-                    <form onSubmit={handleSearch} className="w-80">
+                    <form onSubmit={handleSearch} action="/" className="w-80">
                         <div className="relative">
                             <input
-                                type="text"
+                                name='q'
                                 value={query}
                                 onChange={(e) => setQuery(e.target.value)}
                                 placeholder="O que você está buscando?"

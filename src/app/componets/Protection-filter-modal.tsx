@@ -1,6 +1,5 @@
 import { Dropdown, DropdownItem } from "flowbite-react";
 
-
 const PROTECTION_SUBFILTERS = [
     { key: "ARM_PROTECTOR", label: "Protetor de Braço" },
     { key: "HEAD_PROTECTOR", label: "Protetor de Cabeça" },

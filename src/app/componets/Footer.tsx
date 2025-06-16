@@ -1,9 +1,6 @@
 "use client"
-
 import { useFilter } from "../hooks/useFilter";
 import { FilterType } from "../types/Filter-types";
-
-
 import { FaWhatsapp } from "react-icons/fa";
 import { IoLocationOutline } from "react-icons/io5";
 import { MdOutlineEmail } from "react-icons/md";
@@ -61,7 +58,6 @@ export function Footer() {
                     </ul>
                 </nav>
                 <div className="flex flex-col md:flex-row items-center justify-center gap-8">
-
                     <h3 className="text-bgSecondary font-poppins font-normal  text-sm">
                         Desenvolvido por Davy Cosmo
                     </h3>
@@ -70,14 +66,8 @@ export function Footer() {
                     <h3 className="text-bgSecondary font-poppins text-sm">
                         Todos os direitos reservados DavyCosmo ©2025
                     </h3>
-
-
                 </div>
-
-
             </section>
-
-
         </footer>
     )
 }
