@@ -18,12 +18,18 @@ function isJwtExpired(token: string): boolean {
 
     return payload.exp < now
   } catch (err) {
-    return true // Se der erro ao decodificar, considera expirado/inválido
+    return true 
   }
 }
 
 export function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname
+
+ 
+  if (path.startsWith('/api')) {
+    return NextResponse.next()
+  }
+
   const publicRoute = publicRoutes.find(route => route.path === path)
   const authToken = request.cookies.get('token')?.value
 
