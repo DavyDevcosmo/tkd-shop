@@ -1,8 +1,9 @@
 "use client"
 
 import { createContext, useState, ReactNode } from "react"
-import { FILTER_TYPE_TO_CATEGORY, FilterType } from "../types/Filter-types"
+
 import { ProtectorType } from "../types/Protections-Types"
+import { FilterType } from "../types/Filter-types";
 
 interface FilterContextType {
     search: string;
@@ -32,7 +33,7 @@ export function FilterContextProvider({ children }: ProviderProps) {
 
     const handleSetType = (newType: FilterType) => {
         setType(newType);
-        setCategory(FILTER_TYPE_TO_CATEGORY[newType]);
+        setCategory(FilterType[newType]);
     };
 
     return (

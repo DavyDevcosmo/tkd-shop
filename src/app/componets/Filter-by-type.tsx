@@ -1,8 +1,10 @@
-import { useFilter } from "../hooks/useFilter";
-import { FILTER_TYPE_TO_CATEGORY, FilterType } from "../types/Filter-types";
+import { useSearchParams } from "next/navigation";
+import { FILTER_TYPE_LABELS, FilterType } from "../types/Filter-types";
+import Link from "next/link";
 
 export function FilterByTypes() {
-    const { type, setType } = useFilter();
+    const searchParams = useSearchParams();
+    const currentCategory = searchParams.get('category') || FilterType.ALL;
 
     return (
         <section className="w-full py-2 bg-white shadow-sm pb-4">
@@ -10,12 +12,13 @@ export function FilterByTypes() {
                 <ul className="flex items-center justify-center gap-16">
                     {Object.values(FilterType).map((filterType) => (
                         <li key={filterType}>
-                            <button
-                                onClick={() => setType(filterType)}
-                                className={`${type === filterType ? "font-semibold border-b-2 border-red-500" : ""}`}
+                            <Link
+                                href={filterType === FilterType.ALL ? '/' : `/?category=${filterType}`}
+                                scroll={false}
+                                className={`${currentCategory === filterType ? "font-semibold border-b-2 border-red-500" : ""}`}
                             >
-                                {FILTER_TYPE_TO_CATEGORY[filterType] || "Todos"}
-                            </button>
+                                {FILTER_TYPE_LABELS[filterType] || "Todos"}
+                            </Link>
                         </li>
                     ))}
                 </ul>

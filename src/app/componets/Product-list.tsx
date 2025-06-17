@@ -1,13 +1,22 @@
 "use client"
 import Image from "next/image"
-import { useProducts } from "../hooks/useProducts"
 import { AiOutlineShoppingCart } from "react-icons/ai"
 
-export default function ProductList() {
-    const { products, loading } = useProducts()
+export type Product = {
+    id: number
+    name: string
+    description: string
+    price: number
+    images: string[]
+    category: string
+    slug: string
+}
 
-    if (loading) return <p>Carregando...</p>
+type ProductListProps = {
+    products: Product[]
+}
 
+export default function ProductList({ products }: ProductListProps) {
     return (
         <div className="container mx-auto px-4">
             <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-center ">
@@ -22,7 +31,6 @@ export default function ProductList() {
                                 priority
                                 className="object-cover rounded-2xl"
                             />
-
                         </div>
                         <div className="flex flex-1 flex-col mt-4 justify-end w-full ml-4">
                             <ul className="flex self-start">
