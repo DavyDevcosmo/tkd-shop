@@ -6,10 +6,10 @@ export enum FilterType {
     TAEKWONDO = 'TAEKWONDO',
 }
 
-export const FILTER_TYPE_TO_CATEGORY: Record<FilterType, string> = {
+export const FILTER_TYPE_LABELS: Record<FilterType, string> = {
     [FilterType.ALL]: "Todos",
-    [FilterType.DOBOK]: "Doboks",
     [FilterType.PROTECTION]: "Proteções",
+    [FilterType.DOBOK]: "Doboks",
     [FilterType.TAEKWONDOBELT]: "Faixas",
-    [FilterType.TAEKWONDO]: "Taekwondo" 
-} as const;
+    [FilterType.TAEKWONDO]: "Taekwondo"
+};

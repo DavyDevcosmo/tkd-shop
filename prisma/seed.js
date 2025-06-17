@@ -8,7 +8,15 @@ const products = [
     description: "Uniforme de Taekwondo leve e confortável para crianças.",
     price: 129.90,
     images: ["https://raw.githubusercontent.com/DavyDevcosmo/tkd-shop/master/public/img/AboutUsSection2.jpg"],
-    category: "Doboks"
+    category: "DOBOK"
+  },
+  {
+    title: "Dobok Adulto",
+    slug: "dobok-adulto",
+    description: "Uniforme de Taekwondo leve e confortável para crianças.",
+    price: 129.90,
+    images: ["https://raw.githubusercontent.com/DavyDevcosmo/tkd-shop/master/public/img/AboutUsSection2.jpg"],
+    category: "DOBOK"
   },
   {
     title: "Faixa Amarela",
@@ -16,7 +24,7 @@ const products = [
     description: "Faixa de graduação em algodão reforçado.",
     price: 29.90,
    // images: ["/images/faixa-amarela.jpg"],
-    category: "Faixas"
+    category: "TAEKWONDOBELT"
   },
   {
     title: "Protetor de Tórax Reversível",
@@ -24,7 +32,15 @@ const products = [
     description: "Protetor com cores azul/vermelho para treinos e competições.",
     price: 159.00,
     //images: ["/images/protetor-torax.jpg"],
-    category: "Proteções"
+    category: "PROTECTION"
+  },
+  {
+    title: "Protetor ",
+    slug: "protetor",
+    description: "Protetor com cores azul/vermelho para treinos e competições.",
+    price: 159.00,
+    //images: ["/images/protetor-torax.jpg"],
+    category: "PROTECTION"
   },
   {
     title: "Luva de Taekwondo",
@@ -32,7 +48,7 @@ const products = [
     description: "Luva de treino com fechamento em velcro.",
     price: 79.90,
     //images: ["/images/luva.jpg"],
-    category: "Equipamentos"
+    category: "TAEKWONDO"
   },
   {
     title: "Raquete de Chute Dupla",
@@ -40,7 +56,7 @@ const products = [
     description: "Ideal para treinar precisão e velocidade dos chutes.",
     price: 89.90,
     //images: ["/images/raquete-chute.jpg"],
-    category: "Acessórios"
+    category: "TAEKWONDO"
   }
 ];
 
