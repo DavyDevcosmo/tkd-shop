@@ -1,11 +1,12 @@
 "use client"
 import { useFilter } from "../hooks/useFilter";
-import { FilterType } from "../types/Filter-types";
+
 import { FaWhatsapp } from "react-icons/fa";
 import { IoLocationOutline } from "react-icons/io5";
 import { MdOutlineEmail } from "react-icons/md";
 import { FaFacebookF } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
+import { FilterType } from "../types/filter-types";
 
 export function Footer() {
 

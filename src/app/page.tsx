@@ -1,11 +1,11 @@
 
 import { AboutUsSection } from "./componets/About-us"
-import { BannerMain } from "./componets/Banner-main"
 import ProductList, { Product } from "./componets/Product-list"
 import { Footer } from "./componets/Footer"
 import NavBar from "./componets/Nav-bar"
-import { FilterContextProvider } from "./context/Filter-context"
 import db from "../../prisma/db"
+import { FilterContextProvider } from "./context/filter-context"
+import { BannerMain } from "./componets/banner-main"
 
 type SearchParams = {
   q?: string;

@@ -8,7 +8,8 @@ import { useState, useEffect } from "react";
 import { loginUser } from "../actions/loginUser";
 
 import GoogleLogo from "../../../componets/Google-logo";
-import InputRegister from "@/app/componets/Input-register";
+import InputRegister from "@/app/componets/input-register";
+
 
 type LoginState = {
     success: boolean;

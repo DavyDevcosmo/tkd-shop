@@ -1,6 +1,7 @@
 import { useSearchParams } from "next/navigation";
-import { FILTER_TYPE_LABELS, FilterType } from "../types/Filter-types";
+
 import Link from "next/link";
+import { FILTER_TYPE_LABELS, FilterType } from "../types/filter-types";
 
 export function FilterByTypes() {
     const searchParams = useSearchParams();
