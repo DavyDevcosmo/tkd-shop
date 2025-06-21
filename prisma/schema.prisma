@@ -6,22 +6,62 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
-model User {
-  id       Int      @id @default(autoincrement())
-  email    String   @unique
-  name     String
-  Products Product[]
-}
-model Product {
-  id          Int      @id @default(autoincrement())
-  name        String
-  description String
-  price       Float
-  images      String[]
-  category    String
-  createdAt   DateTime @default(now())
-  slug String @unique
 
-    userId      Int?    
-  User        User?    @relation(fields: [userId], references: [id])
+model Category {
+  id          Int          @id @default(autoincrement())
+  name        String       @unique
+  products    Product[]
+  filterTypes FilterType[]
+}
+
+model FilterType {
+  id           Int           @id @default(autoincrement())
+  name         String
+  categoryId   Int
+  category     Category      @relation(fields: [categoryId], references: [id])
+  filterValues FilterValue[]
+}
+
+model FilterValue {
+  id             Int             @id @default(autoincrement())
+  value          String
+  filterTypeId   Int
+  filterType     FilterType      @relation(fields: [filterTypeId], references: [id])
+  productFilters ProductFilter[]
+}
+
+model User {
+  id       Int       @id @default(autoincrement())
+  email    String    @unique
+  name     String
+  products Product[]
+}
+
+model Product {
+  id             Int             @id @default(autoincrement())
+  name           String
+  description    String
+  price          Float
+  slug           String          @unique
+  images         ProductImage[]
+  categoryId     Int
+  category       Category        @relation(fields: [categoryId], references: [id])
+  userId         Int?
+  user           User?           @relation(fields: [userId], references: [id])
+  productFilters ProductFilter[]
+}
+
+model ProductFilter {
+  id            Int         @id @default(autoincrement())
+  productId     Int
+  filterValueId Int
+  product       Product     @relation(fields: [productId], references: [id])
+  filterValue   FilterValue @relation(fields: [filterValueId], references: [id])
+}
+
+model ProductImage {
+  id        Int     @id @default(autoincrement())
+  url       String
+  productId Int
+  product   Product @relation(fields: [productId], references: [id])
 }
