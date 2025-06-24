@@ -1,8 +1,8 @@
 "use client"
 
 import { createContext, useState, ReactNode } from "react"
-import { FilterType } from "../types/filter-types";
-import { ProtectorType } from "../types/protections-Types";
+import { ProtectorType } from "../types/Protections-Types";
+import { FilterType } from "../types/Filter-types";
 
 
 interface FilterContextType {
