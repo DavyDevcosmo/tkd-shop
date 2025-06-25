@@ -1,7 +1,8 @@
 import { useSearchParams } from "next/navigation";
 
 import Link from "next/link";
-import { FILTER_TYPE_LABELS, FilterType } from "../types/filter-types";
+import { FILTER_TYPE_LABELS, FilterType } from "../types/Filter-types";
+
 
 export function FilterByTypes() {
     const searchParams = useSearchParams();
@@ -27,3 +28,4 @@ export function FilterByTypes() {
         </section>
     );
 }
+// quero fazer um comcomponete para cada filtro, e depois so importo eles com a mesma logica de quando eu clico no header no link e aparece o produto

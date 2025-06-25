@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useActionState } from "react";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import InputRegister from "@/app/componets/input-register";
+import InputRegister from "../../../componets/Input-register";
 
 type RegisterState = {
   success: boolean;

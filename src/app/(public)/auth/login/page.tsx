@@ -8,7 +8,9 @@ import { useState, useEffect } from "react";
 import { loginUser } from "../actions/loginUser";
 
 import GoogleLogo from "../../../componets/Google-logo";
-import InputRegister from "@/app/componets/input-register";
+import InputRegister from "../../../componets/Input-register";
+
+
 
 
 type LoginState = {
