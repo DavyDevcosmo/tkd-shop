@@ -34,10 +34,10 @@ export default function ProductList({ products }: ProductListProps) {
                         </div>
                         <div className="flex flex-1 flex-col mt-4 justify-end w-full ml-4">
                             <ul className="flex self-start">
-                                <li className="text-primary font-Monterrat font-bold mr-1 ">
+                                <li className="text-primary font-Montserrat font-bold mr-1 ">
                                     {product?.price ? product.price.toFixed(2) : "--"}
                                 </li>
-                                <li className="text-gray-400 font-Monterrat">
+                                <li className="text-gray-400 font-Montserrat">
                                     {product?.price ? product.price.toFixed(2) : "--"}
                                 </li>
                             </ul>
