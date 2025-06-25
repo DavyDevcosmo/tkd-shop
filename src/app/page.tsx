@@ -5,7 +5,11 @@ import { Footer } from "./componets/Footer"
 import NavBar from "./componets/Nav-bar"
 import db from "../../prisma/db"
 import { FilterContextProvider } from "./context/filter-context"
-import { BannerMain } from "./componets/banner-main"
+import { BannerMain } from "./componets/Banner-main"
+import FiltersSidebar from "./componets/filterForProducts/Filter-dobok"
+import SizePriceFilters from "./componets/filterForProducts/Filter-protetor-de-tronco"
+import ProductFilters from "./componets/filterForProducts/Filter-dobok"
+
 
 type SearchParams = {
   q?: string;
@@ -37,6 +41,9 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
       <FilterContextProvider>
         <NavBar />
         <BannerMain />
+        {category === 'DOBOK' && <ProductFilters />}
+        {category === 'PROTECTION' && <SizePriceFilters />}
+
         <ProductList products={products} />
         <AboutUsSection />
         <Footer />
