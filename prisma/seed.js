@@ -27,6 +27,15 @@ const products = [
     category: "TAEKWONDOBELT"
   },
   {
+    title: "Faixa Amarela teste de cor",
+    slug: "faixa-amarela",
+    description: "Faixa de graduação em algodão reforçado.",
+    price: 29.90,
+   // images: ["/images/faixa-amarela.jpg"],
+    category: "TAEKWONDOBELT",
+   
+  },
+  {
     title: "Protetor de Tórax Reversível",
     slug: "protetor-torax",
     description: "Protetor com cores azul/vermelho para treinos e competições.",
@@ -72,6 +81,7 @@ async function main() {
         price: product.price,
         images: product.images,
         category: product.category,
+  
       }
     });
   }
