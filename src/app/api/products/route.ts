@@ -8,7 +8,9 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url)
     const category = searchParams.get("category")
 
-    const where = category ? { category } : undefined
+    const where = category
+      ? { category: { name: category } }
+      : undefined
     const products = await prisma.product.findMany({ where })
 
     return NextResponse.json(products)

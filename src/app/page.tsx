@@ -15,20 +15,42 @@ type SearchParams = {
   q?: string;
   category?: string;
 };
-
-async function getProducts(searchTerm?: string, category?: string) {
+async function getProducts(searchTerm?: string, category?: string): Promise<Product[]> {
   const where: any = {};
+
   if (searchTerm) {
     where.name = { contains: searchTerm, mode: 'insensitive' };
   }
+
   if (category && category !== 'ALL') {
-    where.category = category;
+    where.category = {
+      name: category,
+    };
   }
-  return db.product.findMany({
+
+  const productsFromDb = await db.product.findMany({
     where,
-    orderBy: { createdAt: 'desc' },
+    orderBy: { id: 'desc' },
+    include: {
+      images: true,
+      category: true,
+    },
   });
+
+
+  const formattedProducts: Product[] = productsFromDb.map(p => ({
+    id: p.id,
+    name: p.name,
+    description: p.description,
+    price: p.price,
+    slug: p.slug,
+    images: p.images.map(img => img.url),
+    category: p.category.name,
+  }));
+
+  return formattedProducts;
 }
+
 
 export default async function Home({ searchParams }: { searchParams: Promise<SearchParams> }) {
   const params = await searchParams;
@@ -51,4 +73,3 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
     </main>
   )
 }
-
