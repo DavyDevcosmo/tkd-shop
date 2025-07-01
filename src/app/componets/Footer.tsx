@@ -6,7 +6,8 @@ import { IoLocationOutline } from "react-icons/io5";
 import { MdOutlineEmail } from "react-icons/md";
 import { FaFacebookF } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
-import { FilterType } from "../types/filter-types";
+import { FilterType } from "../types/Filter-types";
+
 
 export function Footer() {
 
