@@ -42,7 +42,7 @@ model Product {
   name           String
   description    String
   price          Float
-  slug           String          @unique
+  slug           String
   images         ProductImage[]
   categoryId     Int
   category       Category        @relation(fields: [categoryId], references: [id])

@@ -15,23 +15,23 @@ const products = [
     slug: "dobok-adulto",
     description: "Uniforme de Taekwondo leve e confortável para crianças.",
     price: 129.90,
-    images: ["https://raw.githubusercontent.com/DavyDevcosmo/tkd-shop/master/public/img/AboutUsSection2.jpg"],
+    images: ["https://raw.githubusercontent.com/DavyDevcosmo/tkd-shop/master/public/img/dobok-masculinp.jpg"],
     category: "DOBOK"
   },
   {
     title: "Faixa Amarela",
-    slug: "faixa-amarela",
+    slug: "faixa-amarela-ponta-verde",
     description: "Faixa de graduação em algodão reforçado.",
     price: 29.90,
-   // images: ["/images/faixa-amarela.jpg"],
+    images: ["https://raw.githubusercontent.com/DavyDevcosmo/tkd-shop/master/public/img/faixas-coloridas-2.jpg"],
     category: "TAEKWONDOBELT"
   },
   {
     title: "Faixa Amarela teste de cor",
-    slug: "faixa-amarela",
+    slug: "faixa-amarela1",
     description: "Faixa de graduação em algodão reforçado.",
     price: 29.90,
-   // images: ["/images/faixa-amarela.jpg"],
+    images: ["https://raw.githubusercontent.com/DavyDevcosmo/tkd-shop/master/public/img/faixas-coloridas.jpeg"],
     category: "TAEKWONDOBELT",
    
   },
@@ -40,15 +40,15 @@ const products = [
     slug: "protetor-torax",
     description: "Protetor com cores azul/vermelho para treinos e competições.",
     price: 159.00,
-    //images: ["/images/protetor-torax.jpg"],
+    images: ["https://raw.githubusercontent.com/DavyDevcosmo/tkd-shop/master/public/img/kit-proteção-lutas-azul.webp"],
     category: "PROTECTION"
   },
   {
     title: "Protetor ",
-    slug: "protetor",
+    slug: "protetor-de-tronco",
     description: "Protetor com cores azul/vermelho para treinos e competições.",
     price: 159.00,
-    //images: ["/images/protetor-torax.jpg"],
+    images: ["https://raw.githubusercontent.com/DavyDevcosmo/tkd-shop/master/public/img/kit-proteção-lutas.webp"],
     category: "PROTECTION"
   },
   {
@@ -56,7 +56,7 @@ const products = [
     slug: "luva-taekwondo",
     description: "Luva de treino com fechamento em velcro.",
     price: 79.90,
-    //images: ["/images/luva.jpg"],
+    images: ["https://raw.githubusercontent.com/DavyDevcosmo/tkd-shop/master/public/img/protetor-canela.webp"],
     category: "TAEKWONDO"
   },
   {
@@ -64,13 +64,27 @@ const products = [
     slug: "raquete-chute",
     description: "Ideal para treinar precisão e velocidade dos chutes.",
     price: 89.90,
-    //images: ["/images/raquete-chute.jpg"],
+    images: ["https://raw.githubusercontent.com/DavyDevcosmo/tkd-shop/master/public/img/raquete-de-treino.jpg"],
     category: "TAEKWONDO"
   }
 ];
 
 async function main() {
   console.log('Start seeding products...');
+
+   const categoriesToCreate = [
+  { name: "DOBOK" },
+  { name: "PROTECTION" },
+  { name: "TAEKWONDOBELT" },
+  { name: "TAEKWONDO" }
+];
+
+  await prisma.category.createMany({
+    data: categoriesToCreate,
+    skipDuplicates: true,
+  });
+
+  console.log('Categories created:', categoriesToCreate.map(c => c.name));
   
   for (const product of products) {
     await prisma.product.create({
@@ -79,9 +93,12 @@ async function main() {
         slug: product.slug,
         description: product.description,
         price: product.price,
-        images: product.images,
-        category: product.category,
-  
+          images: {
+          create: product.images?.map(url => ({ url })) || []
+        },
+        category: {
+          connect: { name: product.category }
+        }
       }
     });
   }
