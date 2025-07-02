@@ -1,12 +1,11 @@
 
 import { AboutUsSection } from "./componets/About-us"
-import ProductList, { Product } from "./componets/Product-list"
+import ProductList from "./componets/Product-list"
 import { Footer } from "./componets/Footer"
 import NavBar from "./componets/Nav-bar"
 import db from "../../prisma/db"
 import { FilterContextProvider } from "./context/filter-context"
 import { BannerMain } from "./componets/Banner-main"
-import FiltersSidebar from "./componets/filterForProducts/Filter-dobok"
 import SizePriceFilters from "./componets/filterForProducts/Filter-protetor-de-tronco"
 import ProductFilters from "./componets/filterForProducts/Filter-dobok"
 
@@ -15,7 +14,8 @@ type SearchParams = {
   q?: string;
   category?: string;
 };
-async function getProducts(searchTerm?: string, category?: string): Promise<Product[]> {
+
+async function getProducts(searchTerm?: string, category?: string) {
   const where: any = {};
 
   if (searchTerm) {
@@ -23,34 +23,22 @@ async function getProducts(searchTerm?: string, category?: string): Promise<Prod
   }
 
   if (category && category !== 'ALL') {
-    where.category = {
-      name: category,
-    };
+    where.category = { name: category };
   }
 
-  const productsFromDb = await db.product.findMany({
+  return db.product.findMany({
     where,
-    orderBy: { id: 'desc' },
     include: {
       images: true,
-      category: true,
+      category: {
+        select: {
+          name: true
+        }
+      }
     },
+    orderBy: { createdAt: 'desc' },
   });
-
-
-  const formattedProducts: Product[] = productsFromDb.map(p => ({
-    id: p.id,
-    name: p.name,
-    description: p.description,
-    price: p.price,
-    slug: p.slug,
-    images: p.images.map(img => img.url),
-    category: p.category.name,
-  }));
-
-  return formattedProducts;
 }
-
 
 export default async function Home({ searchParams }: { searchParams: Promise<SearchParams> }) {
   const params = await searchParams;

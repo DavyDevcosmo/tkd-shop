@@ -7,8 +7,8 @@ export type Product = {
     name: string
     description: string
     price: number
-    images: string[]
-    category: string
+    images: { url: string }[]
+    category: { name: string }
     slug: string
 }
 
@@ -24,7 +24,8 @@ export default function ProductList({ products }: ProductListProps) {
                     <article key={product.id} className="flex flex-col items-center h-96 w-72 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                         <div className="relative w-full h-3/5">
                             <Image
-                                src="https://raw.githubusercontent.com/DavyDevcosmo/tkd-shop/master/public/img/protection.jpg"
+
+                                src={product.images[0]?.url || "/default-image.jpg"}
                                 alt={product.name}
                                 fill
                                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
@@ -41,7 +42,7 @@ export default function ProductList({ products }: ProductListProps) {
                                     {product?.price ? product.price.toFixed(2) : "--"}
                                 </li>
                             </ul>
-                            <h3 className="text-lg font-Montserrat text-primary font-medium">{product.name}</h3>
+                            <h3 className="text-lg font-Montserrat text-primary font-medium">  {product.name} - {product.category.name}</h3>
                         </div>
                         <div className="flex items-center justify-between w-full pb-0 mt-4">
                             <button className="bg-primary py-3 px-16 ml-2 mb-2 text-white font-semibold font-Poppins cursor-pointer">Comprar</button>
