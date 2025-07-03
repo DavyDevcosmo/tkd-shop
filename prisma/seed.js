@@ -72,6 +72,9 @@ const products = [
 async function main() {
   console.log('Start seeding products...');
 
+   await prisma.productImage.deleteMany();
+  await prisma.product.deleteMany();
+
    const categoriesToCreate = [
   { name: "DOBOK" },
   { name: "PROTECTION" },
