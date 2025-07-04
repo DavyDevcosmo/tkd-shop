@@ -53,6 +53,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
         <BannerMain />
         {category === 'DOBOK' && <ProductFilters />}
         {category === 'PROTECTION' && <SizePriceFilters />}
+        {category === 'TAEKWONDOBELT' && <ProductFilters />}
 
         <ProductList products={products} />
         <AboutUsSection />
