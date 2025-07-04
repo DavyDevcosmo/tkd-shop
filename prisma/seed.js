@@ -2,6 +2,8 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 const products = [
+
+  //Doboks
   {
     title: "Dobok Infantil",
     slug: "dobok-infantil",
@@ -18,13 +20,16 @@ const products = [
     images: ["https://raw.githubusercontent.com/DavyDevcosmo/tkd-shop/master/public/img/dobok-masculinp.jpg"],
     category: "DOBOK"
   },
+
+  //Faixas
   {
     title: "Faixa Amarela",
     slug: "faixa-amarela-ponta-verde",
     description: "Faixa de graduação em algodão reforçado.",
     price: 29.90,
     images: ["https://raw.githubusercontent.com/DavyDevcosmo/tkd-shop/master/public/img/faixas-coloridas-2.jpg"],
-    category: "TAEKWONDOBELT"
+    category: "TAEKWONDOBELT",
+    color: "amarela",
   },
   {
     title: "Faixa Amarela teste de cor",
@@ -35,6 +40,8 @@ const products = [
     category: "TAEKWONDOBELT",
    
   },
+
+  //Proteções
   {
     title: "Protetor de Tórax Reversível",
     slug: "protetor-torax",
@@ -51,6 +58,8 @@ const products = [
     images: ["https://raw.githubusercontent.com/DavyDevcosmo/tkd-shop/master/public/img/kit-proteção-lutas.webp"],
     category: "PROTECTION"
   },
+
+  //luvas
   {
     title: "Luva de Taekwondo",
     slug: "luva-taekwondo",
@@ -59,6 +68,8 @@ const products = [
     images: ["https://raw.githubusercontent.com/DavyDevcosmo/tkd-shop/master/public/img/protetor-canela.webp"],
     category: "TAEKWONDO"
   },
+
+  //acessórios de treino
   {
     title: "Raquete de Chute Dupla",
     slug: "raquete-chute",
@@ -96,6 +107,7 @@ async function main() {
         slug: product.slug,
         description: product.description,
         price: product.price,
+        color: product.color || null, 
           images: {
           create: product.images?.map(url => ({ url })) || []
         },

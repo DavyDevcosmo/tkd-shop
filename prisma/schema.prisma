@@ -51,6 +51,9 @@ model Product {
   productFilters ProductFilter[]
    createdAt      DateTime        @default(now()) 
   updatedAt      DateTime        @updatedAt      
+  color          String?
+  size          String?
+  taekwondoBeltSize           String?
 }
 
 model ProductFilter {
