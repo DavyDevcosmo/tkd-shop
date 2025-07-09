@@ -28,4 +28,3 @@ export function FilterByTypes() {
         </section>
     );
 }
-// quero fazer um comcomponete para cada filtro, e depois so importo eles com a mesma logica de quando eu clico no header no link e aparece o produto

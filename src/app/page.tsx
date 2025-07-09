@@ -13,9 +13,10 @@ import ProductFilters from "./componets/filterForProducts/Filter-dobok"
 type SearchParams = {
   q?: string;
   category?: string;
+  color?: string;
 };
 
-async function getProducts(searchTerm?: string, category?: string) {
+async function getProducts(searchTerm?: string, category?: string, color?: string) {
   const where: any = {};
 
   if (searchTerm) {
@@ -24,6 +25,9 @@ async function getProducts(searchTerm?: string, category?: string) {
 
   if (category && category !== 'ALL') {
     where.category = { name: category };
+  }
+  if (color) {
+    where.color = color
   }
 
   return db.product.findMany({
@@ -44,7 +48,8 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
   const params = await searchParams;
   const searchTerm = params?.q;
   const category = params?.category;
-  const products = await getProducts(searchTerm, category);
+  const color = params?.color;
+  const products = await getProducts(searchTerm, category, color);
 
   return (
     <main>
