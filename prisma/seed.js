@@ -10,7 +10,8 @@ const products = [
     description: "Uniforme de Taekwondo leve e confortável para crianças.",
     price: 129.90,
     images: ["https://raw.githubusercontent.com/DavyDevcosmo/tkd-shop/master/public/img/AboutUsSection2.jpg"],
-    category: "DOBOK"
+    category: "DOBOK",
+    sizeDobok: "A1- 150cm A 160cm"
   },
   {
     title: "Dobok Adulto",
@@ -18,7 +19,8 @@ const products = [
     description: "Uniforme de Taekwondo leve e confortável para crianças.",
     price: 129.90,
     images: ["https://raw.githubusercontent.com/DavyDevcosmo/tkd-shop/master/public/img/dobok-masculinp.jpg"],
-    category: "DOBOK"
+    category: "DOBOK",
+    sizeDobok: "A2 - 160cm A 170cm"
   },
 
   //Faixas
@@ -29,7 +31,7 @@ const products = [
     price: 29.90,
     images: ["https://raw.githubusercontent.com/DavyDevcosmo/tkd-shop/master/public/img/faixas-coloridas-2.jpg"],
     category: "TAEKWONDOBELT",
-    color: "amarela",
+    color: "Amarela",
   },
   {
     title: "Faixa Amarela teste de cor",
@@ -38,6 +40,7 @@ const products = [
     price: 29.90,
     images: ["https://raw.githubusercontent.com/DavyDevcosmo/tkd-shop/master/public/img/faixas-coloridas.jpeg"],
     category: "TAEKWONDOBELT",
+    color: "Cinza",
    
   },
 
@@ -48,7 +51,8 @@ const products = [
     description: "Protetor com cores azul/vermelho para treinos e competições.",
     price: 159.00,
     images: ["https://raw.githubusercontent.com/DavyDevcosmo/tkd-shop/master/public/img/kit-proteção-lutas-azul.webp"],
-    category: "PROTECTION"
+    category: "PROTECTION",
+    
   },
   {
     title: "Protetor ",
@@ -56,7 +60,8 @@ const products = [
     description: "Protetor com cores azul/vermelho para treinos e competições.",
     price: 159.00,
     images: ["https://raw.githubusercontent.com/DavyDevcosmo/tkd-shop/master/public/img/kit-proteção-lutas.webp"],
-    category: "PROTECTION"
+    category: "PROTECTION",
+    
   },
 
   //luvas
@@ -108,6 +113,7 @@ async function main() {
         description: product.description,
         price: product.price,
         color: product.color || null, 
+        sizeDobok: product.sizeDobok || null,
           images: {
           create: product.images?.map(url => ({ url })) || []
         },
