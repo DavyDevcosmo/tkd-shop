@@ -14,9 +14,10 @@ type SearchParams = {
   q?: string;
   category?: string;
   color?: string;
+  sizeDobok?: string;
 };
 
-async function getProducts(searchTerm?: string, category?: string, color?: string) {
+async function getProducts(searchTerm?: string, category?: string, color?: string, sizeDobok?: string) {
   const where: any = {};
 
   if (searchTerm) {
@@ -27,7 +28,19 @@ async function getProducts(searchTerm?: string, category?: string, color?: strin
     where.category = { name: category };
   }
   if (color) {
-    where.color = color
+    if (Array.isArray(color)) {
+      where.color = { in: color };
+    } else {
+      where.color = color
+    }
+  }
+
+  if (sizeDobok) {
+    if (Array.isArray(sizeDobok)) {
+      where.sizeDobok = { in: sizeDobok };
+    } else {
+      where.sizeDobok = sizeDobok;
+    }
   }
 
   return db.product.findMany({
@@ -49,7 +62,8 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
   const searchTerm = params?.q;
   const category = params?.category;
   const color = params?.color;
-  const products = await getProducts(searchTerm, category, color);
+  const sizeDobok = params?.sizeDobok;
+  const products = await getProducts(searchTerm, category, color, sizeDobok);
 
   return (
     <main>

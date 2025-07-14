@@ -10,7 +10,8 @@ export type Product = {
     images: { url: string }[]
     category: { name: string }
     slug: string
-    color?: string
+    color?: string | null
+    sizeDobk?: string | null
 }
 
 type ProductListProps = {
