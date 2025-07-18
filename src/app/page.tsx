@@ -8,6 +8,8 @@ import { FilterContextProvider } from "./context/filter-context"
 import { BannerMain } from "./componets/Banner-main"
 import SizePriceFilters from "./componets/filterForProducts/Filter-protetor-de-tronco"
 import ProductFilters from "./componets/filterForProducts/Filter-dobok"
+import FilterDobok from "./componets/filterForProducts/Filter-dobok"
+import FilterTaekwondoBelt from "./componets/filterForProducts/Filter-taekwondo-belt"
 
 
 type SearchParams = {
@@ -70,9 +72,10 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
       <FilterContextProvider>
         <NavBar />
         <BannerMain />
-        {category === 'DOBOK' && <ProductFilters />}
+        {category === 'DOBOK' && <FilterDobok />}
         {category === 'PROTECTION' && <SizePriceFilters />}
-        {category === 'TAEKWONDOBELT' && <ProductFilters />}
+        {category === 'TAEKWONDOBELT' && <FilterTaekwondoBelt />}
+
 
         <ProductList products={products} />
         <AboutUsSection />
