@@ -32,6 +32,7 @@ const products = [
     images: ["https://raw.githubusercontent.com/DavyDevcosmo/tkd-shop/master/public/img/faixas-coloridas-2.jpg"],
     category: "TAEKWONDOBELT",
     color: "Amarela",
+    beltSize: "G - 320cm",
   },
   {
     title: "Faixa Amarela teste de cor",
@@ -41,6 +42,7 @@ const products = [
     images: ["https://raw.githubusercontent.com/DavyDevcosmo/tkd-shop/master/public/img/faixas-coloridas.jpeg"],
     category: "TAEKWONDOBELT",
     color: "Cinza",
+    beltSize: "M - 290cm",
    
   },
 
@@ -114,6 +116,7 @@ async function main() {
         price: product.price,
         color: product.color || null, 
         sizeDobok: product.sizeDobok || null,
+        beltSize: product.beltSize || null,
           images: {
           create: product.images?.map(url => ({ url })) || []
         },

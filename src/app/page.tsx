@@ -7,9 +7,8 @@ import db from "../../prisma/db"
 import { FilterContextProvider } from "./context/filter-context"
 import { BannerMain } from "./componets/Banner-main"
 import SizePriceFilters from "./componets/filterForProducts/Filter-protetor-de-tronco"
-import ProductFilters from "./componets/filterForProducts/Filter-dobok"
 import FilterDobok from "./componets/filterForProducts/Filter-dobok"
-import FilterTaekwondoBelt from "./componets/filterForProducts/Filter-taekwondo-belt"
+import FilterTaekwondoBelt from "./componets/filterForProducts/Filter-beltSize"
 
 
 type SearchParams = {
@@ -17,9 +16,10 @@ type SearchParams = {
   category?: string;
   color?: string;
   sizeDobok?: string;
+  beltSize?: string;
 };
 
-async function getProducts(searchTerm?: string, category?: string, color?: string, sizeDobok?: string) {
+async function getProducts(searchTerm?: string, category?: string, color?: string, sizeDobok?: string, beltSize?: string) {
   const where: any = {};
 
   if (searchTerm) {
@@ -44,6 +44,13 @@ async function getProducts(searchTerm?: string, category?: string, color?: strin
       where.sizeDobok = sizeDobok;
     }
   }
+  if (beltSize) {
+    if (Array.isArray(beltSize)) {
+      where.beltSize = { in: beltSize };
+    } else {
+      where.beltSize = beltSize;
+    }
+  }
 
   return db.product.findMany({
     where,
@@ -65,7 +72,8 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
   const category = params?.category;
   const color = params?.color;
   const sizeDobok = params?.sizeDobok;
-  const products = await getProducts(searchTerm, category, color, sizeDobok);
+  const beltSize = params?.beltSize
+  const products = await getProducts(searchTerm, category, color, sizeDobok, beltSize);
 
   return (
     <main>
