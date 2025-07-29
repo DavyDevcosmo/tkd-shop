@@ -8,11 +8,13 @@ import { useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { FilterByTypes } from "./Filter-by-type";
+import CartNotFound from "./cart/Cart-not-found";
 
 
 export default function NavBar() {
     const [query, setQuery] = useState("");
     const router = useRouter();
+    const [showCartModal, setShowCartModal] = useState(false);
 
     const handleSearch = (e: React.FormEvent) => {
         e.preventDefault();
@@ -58,13 +60,19 @@ export default function NavBar() {
                         </li>
                         <li>
                             <a href="#" className="flex items-center gap-2 mr-6">
-                                <AiOutlineShoppingCart className="w-6 h-6" />
+                                <AiOutlineShoppingCart className="w-6 h-6"
+                                    onClick={() => {
+                                        setShowCartModal(true);
+                                    }} />
                                 <span className="text-sm font-Poppins text-primary">Carrinho</span>
                             </a>
                         </li>
                     </ul>
                 </div>
             </section>
+            {showCartModal && (
+                <CartNotFound />
+            )}
 
             <FilterByTypes />
         </header>

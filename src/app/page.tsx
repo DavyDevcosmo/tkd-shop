@@ -9,6 +9,7 @@ import { BannerMain } from "./componets/Banner-main"
 import SizePriceFilters from "./componets/filterForProducts/Filter-protetor-de-tronco"
 import FilterDobok from "./componets/filterForProducts/Filter-dobok"
 import FilterTaekwondoBelt from "./componets/filterForProducts/Filter-beltSize"
+import CartNotFound from "./componets/cart/Cart-not-found"
 
 
 type SearchParams = {
@@ -79,6 +80,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
     <main>
       <FilterContextProvider>
         <NavBar />
+        <CartNotFound />
         <BannerMain />
         {category === 'DOBOK' && <FilterDobok />}
         {category === 'PROTECTION' && <SizePriceFilters />}
