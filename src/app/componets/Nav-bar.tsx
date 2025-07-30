@@ -59,11 +59,12 @@ export default function NavBar() {
                             </a>
                         </li>
                         <li>
-                            <a href="#" className="flex items-center gap-2 mr-6">
+                            <a href="#" className="flex items-center gap-2 mr-6 ">
                                 <AiOutlineShoppingCart className="w-6 h-6"
                                     onClick={() => {
                                         setShowCartModal(true);
                                     }} />
+                                Carrinho
                                 <span className="text-sm font-Poppins text-primary">Carrinho</span>
                             </a>
                         </li>
@@ -71,7 +72,7 @@ export default function NavBar() {
                 </div>
             </section>
             {showCartModal && (
-                <CartNotFound />
+                <CartNotFound onClose={() => setShowCartModal(false)} />
             )}
 
             <FilterByTypes />

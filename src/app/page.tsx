@@ -80,13 +80,10 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
     <main>
       <FilterContextProvider>
         <NavBar />
-        <CartNotFound />
         <BannerMain />
         {category === 'DOBOK' && <FilterDobok />}
         {category === 'PROTECTION' && <SizePriceFilters />}
         {category === 'TAEKWONDOBELT' && <FilterTaekwondoBelt />}
-
-
         <ProductList products={products} />
         <AboutUsSection />
         <Footer />
