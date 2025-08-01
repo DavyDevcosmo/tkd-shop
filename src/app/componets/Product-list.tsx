@@ -1,22 +1,8 @@
 "use client"
 import Image from "next/image"
 import { AiOutlineShoppingCart } from "react-icons/ai"
+import { ProductListProps } from "../types/type-product";
 
-export type Product = {
-    id: number
-    name: string
-    description: string
-    price: number
-    images: { url: string }[]
-    category: { name: string }
-    slug: string
-    color?: string | null
-    sizeDobk?: string | null
-}
-
-type ProductListProps = {
-    products: Product[]
-}
 
 export default function ProductList({ products }: ProductListProps) {
     console.log("products recebidos:", products);
