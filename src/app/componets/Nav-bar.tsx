@@ -9,6 +9,7 @@ import { CiSearch } from "react-icons/ci";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { FilterByTypes } from "./Filter-by-type";
 import CartNotFound from "./cart/Cart-not-found";
+import ButtonCart from "./cart/button-cart";
 
 
 export default function NavBar() {
@@ -59,20 +60,23 @@ export default function NavBar() {
                             </a>
                         </li>
                         <li>
-                            <a href="#" className="flex items-center gap-2 mr-6 ">
-                                <AiOutlineShoppingCart className="w-6 h-6"
-                                    onClick={() => {
-                                        setShowCartModal(true);
-                                    }} />
+                            <button
+                                type="button"
+                                className="flex items-center gap-2 mr-6 cursor-pointer"
+                                onClick={() => setShowCartModal(true)}
+                            >
+                                <AiOutlineShoppingCart className="w-6 h-6" />
                                 Carrinho
-                                <span className="text-sm font-Poppins text-primary">Carrinho</span>
-                            </a>
+                            </button>
                         </li>
                     </ul>
                 </div>
             </section>
             {showCartModal && (
-                <CartNotFound onClose={() => setShowCartModal(false)} />
+                <>
+                    <CartNotFound onClose={() => setShowCartModal(false)} />
+                    <ButtonCart onClose={() => setShowCartModal(false)} />
+                </>
             )}
 
             <FilterByTypes />
