@@ -1,9 +1,13 @@
 import { AiTwotoneCloseCircle } from "react-icons/ai";
-import { CartNotFoundProsps } from "./Cart-not-found";
+
+type CartNotFoundProsps = {
+    onClose: () => void;
+}
+
 
 export default function ButtonCart({ onClose }: CartNotFoundProsps) {
     return (
-        <button className="absolute top-0 left-0 w-full h-20 bg-[#000] px-4 py-2 text-[#FFF] flex items-center justify-between cursor-pointer hover:bg-[#393939]"
+        <button className="absolute top-0 left-0 w-full  h-20 bg-[#000] px-4 py-2 text-[#FFF] flex items-center justify-between cursor-pointer hover:bg-[#393939] mb-2"
             onClick={onClose}>
             <span>Carrinho de compras</span>
             <AiTwotoneCloseCircle className="h-9 w-9" />
