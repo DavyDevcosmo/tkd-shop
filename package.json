@@ -10,7 +10,7 @@
     "postinstall": "flowbite-react patch"
   },
   "prisma": {
-     "seed": "node prisma/seed.js"
+    "seed": "node prisma/seed.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
@@ -36,6 +36,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "autoprefixer": "^10.4.21",
+    "biome": "^0.3.3",
     "globals": "^16.0.0",
     "prisma": "^6.8.2",
     "ts-node": "^10.9.2",
