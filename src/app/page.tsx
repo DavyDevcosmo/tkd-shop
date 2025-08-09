@@ -10,6 +10,7 @@ import SizePriceFilters from "./componets/filterForProducts/Filter-protetor-de-t
 import FilterDobok from "./componets/filterForProducts/Filter-dobok"
 import FilterTaekwondoBelt from "./componets/filterForProducts/Filter-beltSize"
 import CartNotFound from "./componets/cart/Cart-not-found"
+import { CartProvider } from "./context/cart"
 
 
 type SearchParams = {
@@ -78,16 +79,18 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
 
   return (
     <main>
-      <FilterContextProvider>
-        <NavBar />
-        <BannerMain />
-        {category === 'DOBOK' && <FilterDobok />}
-        {category === 'PROTECTION' && <SizePriceFilters />}
-        {category === 'TAEKWONDOBELT' && <FilterTaekwondoBelt />}
-        <ProductList products={products} />
-        <AboutUsSection />
-        <Footer />
-      </FilterContextProvider>
+      <CartProvider>
+        <FilterContextProvider>
+          <NavBar />
+          <BannerMain />
+          {category === 'DOBOK' && <FilterDobok />}
+          {category === 'PROTECTION' && <SizePriceFilters />}
+          {category === 'TAEKWONDOBELT' && <FilterTaekwondoBelt />}
+          <ProductList products={products} />
+          <AboutUsSection />
+          <Footer />
+        </FilterContextProvider>
+      </CartProvider>
     </main>
   )
 }
