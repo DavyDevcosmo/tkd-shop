@@ -10,6 +10,7 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { FilterByTypes } from "./Filter-by-type";
 import CartNotFound from "./cart/Cart-not-found";
 import ButtonCart from "./cart/button-cart";
+import CartProducts from "./cart/Cart-products";
 
 
 export default function NavBar() {
@@ -74,8 +75,10 @@ export default function NavBar() {
             </section>
             {showCartModal && (
                 <>
-                    <CartNotFound onClose={() => setShowCartModal(false)} />
-                    <ButtonCart onClose={() => setShowCartModal(false)} />
+                    <CartProducts
+                        onClose={() => setShowCartModal(false)}
+                        products={[]} // TODO: Replace [] with the actual products array from your state or props
+                    />
                 </>
             )}
 

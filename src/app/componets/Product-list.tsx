@@ -2,9 +2,18 @@
 import Image from "next/image"
 import { AiOutlineShoppingCart } from "react-icons/ai"
 import { ProductListProps } from "../types/type-product";
+import { useCart } from "./cart/Cart-products";
 
 
 export default function ProductList({ products }: ProductListProps) {
+    const { addItem } = useCart(); // pega o método para adicionar ao carrinho
+
+    const handleAddToCart = (product: ProductListProps["products"][0]) => {
+        addItem({
+            ...product,
+            quantity: 1 // quantidade inicial
+        });
+    };
     console.log("products recebidos:", products);
     return (
         <div className="container mx-auto px-4">
@@ -35,9 +44,13 @@ export default function ProductList({ products }: ProductListProps) {
                         </div>
                         <div className="flex items-center justify-between w-full pb-0 mt-4">
                             <button className="bg-primary py-3 px-16 ml-2 mb-2 text-white font-semibold font-Poppins cursor-pointer">Comprar</button>
-                            <a href="#" className="flex flex-1 justify-center items-center mr-4">
-                                <AiOutlineShoppingCart className="w-8 h-8" />
-                            </a>
+                            <button
+                                onClick={() => handleAddToCart(product)}
+                                className="flex flex-1 justify-center items-center mr-4"
+                                aria-label={`Adicionar ${product.name} ao carrinho`}
+                            >
+                                <AiOutlineShoppingCart className="w-8 h-8 cursor-pointer" />
+                            </button>
                         </div>
                     </article>
                 ))}
