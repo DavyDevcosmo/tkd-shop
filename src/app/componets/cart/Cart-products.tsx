@@ -6,6 +6,7 @@ import CartNotFound from "./Cart-not-found";
 import { AiTwotoneCloseCircle } from "react-icons/ai";
 import { useContext } from "react";
 import { CartContext } from "@/app/context/cart";
+import { FaRegTrashCan } from "react-icons/fa6";
 
 // Utility function to format price
 function formatPrice(price: number): string {
@@ -51,27 +52,38 @@ export default function CartProducts({ products, onClose }: CartProductsProps) {
                             <Image
                                 src={product.images[0]?.url || "/default-image.jpg"}
                                 alt={product.name}
-                                width={80}
-                                height={80}
+                                width={90}
+                                height={90}
                                 className="object-contain"
                             />
                         </div>
 
-                        <div className="flex flex-col flex-grow">
-                            <p className="text-sm text-black">
-                                {product.name}
-                            </p>
+                        <div className="flex-grow">
+                            {/* Nome e botão de remover */}
+                            <div className="flex items-center justify-between">
+                                <p className="text-lg font-medium text-black">{product.name}</p>
+                                <FaRegTrashCan
+                                    className="h-6 w-6 text-gray-500 hover:text-red-500 transition-colors duration-200 cursor-pointer"
+                                    onClick={() => removeItem(product)}
+                                />
+                            </div>
 
-                            <div className="mt-4 flex items-center justify-between">
-                                <Counter initialValue={1} onChange={() => { }} />
-
+                            {/* Counter e preço */}
+                            <div className="mt-6 flex items-center justify-between">
+                                <Counter
+                                    value={product.quantity}
+                                    onChange={(newValue) => {
+                                        if (newValue > 0) {
+                                            changeQuantity(product, newValue);
+                                        }
+                                    }}
+                                />
                                 <span className="text-base font-semibold text-black">
                                     {formatPrice(product.price)}
                                 </span>
-
-                                <AiTwotoneCloseCircle className="h-9 w-9 cursor-pointer" onClick={() => removeItem(product)} />
                             </div>
                         </div>
+
                     </div>
                 ))}
 
