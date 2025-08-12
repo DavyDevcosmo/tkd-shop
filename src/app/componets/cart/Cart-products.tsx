@@ -71,11 +71,9 @@ export default function CartProducts({ products, onClose }: CartProductsProps) {
                             {/* Counter e preço */}
                             <div className="mt-6 flex items-center justify-between">
                                 <Counter
-                                    value={product.quantity}
-                                    onChange={(newValue) => {
-                                        if (newValue > 0) {
-                                            changeQuantity(product, newValue);
-                                        }
+                                    initialValue={product.quantity}
+                                    onChange={(value) => {
+                                        changeQuantity({ ...product, quantity: value });
                                     }}
                                 />
                                 <span className="text-base font-semibold text-black">
