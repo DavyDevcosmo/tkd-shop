@@ -7,14 +7,10 @@ import { AiTwotoneCloseCircle } from "react-icons/ai";
 import { useContext } from "react";
 import { CartContext } from "@/app/context/cart";
 import { FaRegTrashCan } from "react-icons/fa6";
+import { calculateTotalPrice, formatPrice } from "@/app/utils";
 
 // Utility function to format price
-function formatPrice(price: number): string {
-    return price.toLocaleString("pt-BR", {
-        style: "currency",
-        currency: "BRL",
-    });
-}
+
 export const useCart = () => {
     return useContext(CartContext);
 };
@@ -47,7 +43,7 @@ export default function CartProducts({ products, onClose }: CartProductsProps) {
                 {/* Produtos */}
                 {items.map(product => (
 
-                    <div key={product.id} className="p-6 flex items-center gap-6 border-b border-gray-200">
+                    <div key={product.id} className="p-6 flex items-center gap-6 ">
                         <div className="flex-shrink-0">
                             <Image
                                 src={product.images[0]?.url || "/default-image.jpg"}
@@ -77,15 +73,43 @@ export default function CartProducts({ products, onClose }: CartProductsProps) {
                                     }}
                                 />
                                 <span className="text-base font-semibold text-black">
-                                    {formatPrice(product.price)}
+                                    {formatPrice(product.price * product.quantity)}
                                 </span>
+
                             </div>
                         </div>
 
                     </div>
                 ))}
 
+                <div>
+                    <div className="flex w-3/4 items-center junstify-center">
+                        <input
+                            type="text"
+                            placeholder="Digite algo..."
+                            className="border border-gray-300 rounded-lg p-2 flex-1 h-14"
+                        />
+                        <button className="bg-black text-white px-4 rounded-lg h-14">
+                            Enviar
+                        </button>
+                    </div>
 
+                </div>
+
+
+                <div>
+
+                    <div className="font-bold pl-7 border-t border-zinc-300 flex justify-between mb-10 ">
+                        <h4 className="text-3xl font-bold mt-10">Total:</h4>
+                        <span className="text-3xl font-bold mt-10">{formatPrice(calculateTotalPrice(items))}</span>
+                    </div>
+
+                    <div className=" flex justify-center items-center mx-auto flex-col">
+                        <button className="bg-black text-white w-3/4 h-14 text-3xl font-normal rounded-full cursor-pointer mb-6">Comprar</button>
+                        <span onClick={onClose} className="text-md hover:text-zinc-600 cursor-pointer">ver mais produtos</span>
+                    </div>
+
+                </div>
             </div>
         </div>
 
