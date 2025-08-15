@@ -3,17 +3,35 @@ import Image from "next/image"
 import { AiOutlineShoppingCart } from "react-icons/ai"
 import { ProductListProps } from "../types/type-product";
 import { useCart } from "./cart/Cart-products";
+import { toast } from "react-toastify"; // importar toast
+import { addListener } from "process";
 
 
 export default function ProductList({ products }: ProductListProps) {
-    const { addItem } = useCart(); // pega o método para adicionar ao carrinho
+    const { addItem, items } = useCart(); // pega o método para adicionar ao carrinho
 
     const handleAddToCart = (product: ProductListProps["products"][0]) => {
-        addItem({
-            ...product,
-            quantity: 1 // quantidade inicial
-        });
+        const alreadyInCart = items.find(item => item.id === product.id);
+        if (alreadyInCart) return;
+        try {
+            addItem({
+                ...product,
+                quantity: 1
+            });
+
+            // Usando toastId para não duplicar o toast por produto
+            toast.success(`${product.name} adicionado ao carrinho!`, {
+                toastId: `add-cart-${product.id}`
+            });
+
+        } catch (err) {
+            toast.error(`Erro ao adicionar ${product.name} ao carrinho.`, {
+                toastId: `add-cart-error-${product.id}`
+            });
+        }
     };
+
+
     console.log("products recebidos:", products);
     return (
         <div className="container mx-auto px-4">

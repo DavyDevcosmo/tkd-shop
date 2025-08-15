@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+
+import { ToastContainer, Bounce } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { SessionProvider } from "next-auth/react";
 
 
@@ -28,8 +31,18 @@ export default function RootLayout({
 			<body className="app-body">
 				<div>
 					<SessionProvider>{children}</SessionProvider>
-
 				</div>
+				<ToastContainer
+					position="top-right"
+					autoClose={3000}
+					hideProgressBar={false}
+					closeOnClick
+					pauseOnHover
+					draggable
+					theme="light"
+					transition={Bounce}
+					limit={1} // evita vários toasts iguais ao mesmo tempo
+				/>
 			</body>
 		</html>
 	);
