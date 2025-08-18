@@ -8,8 +8,6 @@ import { useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { FilterByTypes } from "./Filter-by-type";
-import CartNotFound from "./cart/Cart-not-found";
-import ButtonCart from "./cart/button-cart";
 import CartProducts from "./cart/Cart-products";
 
 
