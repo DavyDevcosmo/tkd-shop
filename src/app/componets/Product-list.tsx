@@ -4,7 +4,7 @@ import { AiOutlineShoppingCart } from "react-icons/ai"
 import { ProductListProps } from "../types/type-product";
 import { useCart } from "./cart/Cart-products";
 import { toast } from "react-toastify"; // importar toast
-import { addListener } from "process";
+
 
 
 export default function ProductList({ products }: ProductListProps) {
