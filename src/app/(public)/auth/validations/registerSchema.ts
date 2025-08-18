@@ -34,7 +34,7 @@ const schemaLogin= z.object({
     email: z
         .string()
         .min(1, "Campo e obrigatório")
-        .transform((value) => value.toLocaleLowerCase),
+        .transform((value) => value.toLocaleLowerCase()),
     password: z
         .string()
         .min(6, "O campo é obrigatório")
