@@ -53,10 +53,14 @@ export default function NavBar() {
                 <div className="flex-1 flex justify-end">
                     <ul className="flex items-center gap-10">
                         <li>
-                            <a href="#" className="flex items-center gap-2">
+                            <button
+                                type="button"
+                                className="flex items-center gap-2 mr-6 cursor-pointer"
+                                onClick={() => router.push("/account")}
+                            >
                                 <FaRegUser className="w-5 h-5" />
                                 <span className="text-sm font-Poppins text-primary">Minha Conta</span>
-                            </a>
+                            </button>
                         </li>
                         <li>
                             <button
