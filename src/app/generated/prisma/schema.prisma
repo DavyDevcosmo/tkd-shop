@@ -1,8 +1,9 @@
 generator client {
   provider = "prisma-client-js"
   output   = "../src/app/generated/prisma"
-   runtime  = "vercel-edge"
+  runtime  = "vercel-edge"
 }
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
@@ -30,6 +31,7 @@ model FilterValue {
   filterType     FilterType      @relation(fields: [filterTypeId], references: [id])
   productFilters ProductFilter[]
 }
+
 model Account {
   id                String  @id @default(cuid())
   userId            String  @map("user_id")
@@ -49,6 +51,7 @@ model Account {
   @@unique([provider, providerAccountId])
   @@map("accounts")
 }
+
 model Session {
   id           String   @id @default(cuid())
   sessionToken String   @unique @map("session_token")
