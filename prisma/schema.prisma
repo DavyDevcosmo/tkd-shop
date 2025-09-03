@@ -68,8 +68,7 @@ model User {
   accounts      Account[]
   sessions      Session[]
   products      Product[] // Added opposite relation field
-
-  @@map("users")
+@@map("user")
 }
 
 model VerificationToken {
