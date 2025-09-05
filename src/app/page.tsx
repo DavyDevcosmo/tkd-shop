@@ -3,7 +3,7 @@ import { AboutUsSection } from "./componets/About-us"
 import ProductList from "./componets/Product-list"
 import { Footer } from "./componets/Footer"
 import NavBar from "./componets/Nav-bar"
-import db from "../../prisma/db"
+
 import { FilterContextProvider } from "./context/filter-context"
 import { BannerMain } from "./componets/Banner-main"
 import SizePriceFilters from "./componets/filterForProducts/Filter-protetor-de-tronco"
@@ -11,7 +11,8 @@ import FilterDobok from "./componets/filterForProducts/Filter-dobok"
 import FilterTaekwondoBelt from "./componets/filterForProducts/Filter-beltSize"
 import CartNotFound from "./componets/cart/Cart-not-found"
 import { CartProvider } from "./context/cart"
-
+import { auth } from "./lib/auth"
+import db from "../../prisma/db"
 
 type SearchParams = {
   q?: string;
@@ -75,6 +76,9 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
   const color = params?.color;
   const sizeDobok = params?.sizeDobok;
   const beltSize = params?.beltSize
+
+  const session = await auth();
+  console.log(session?.user?.id);
   const products = await getProducts(searchTerm, category, color, sizeDobok, beltSize);
 
   return (
@@ -82,6 +86,13 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
       <CartProvider>
         <FilterContextProvider>
           <NavBar />
+          <div className="p-4 text-white bg-black">
+            {session ? (
+              <p>Bem-vindo, {session.user?.email}</p>
+            ) : (
+              <p>Você não está logado</p>
+            )}
+          </div>
           <BannerMain />
           {category === 'DOBOK' && <FilterDobok />}
           {category === 'PROTECTION' && <SizePriceFilters />}
