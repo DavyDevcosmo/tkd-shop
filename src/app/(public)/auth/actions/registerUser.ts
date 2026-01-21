@@ -22,7 +22,7 @@ export async function registerUser(formData: FormData) {
   }
 
  
-  const existingUser = await db.user.findUnique({
+   const existingUser = await db.user.findUnique({
     where: { email: parsed.data.email },
   });
   if (existingUser) {
