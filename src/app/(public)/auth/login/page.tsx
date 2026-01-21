@@ -50,7 +50,10 @@ const Login = () => {
     }, [state.success, router]);
 
     return (
-        <form action={formAction} className="flex flex-col p-4">
+        <form action={async (formData) => {
+            "use server"
+            await signIn("credentials", formData)
+        }} className="flex flex-col p-4">
             <h1 className="flex justify-center font-medium font-poppins text-3xl mt-1 mb-6">
                 Bem-vindo de volta!
             </h1>
